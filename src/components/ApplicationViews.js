@@ -22,24 +22,29 @@ export const ApplicationViews = (props) => {
             <AnimalProvider>
                 <LocationProvider>
                     <CustomerProvider>
-                <Route path="/animals">
-                    <AnimalList />
-                </Route>
+                        <Route path="/animals">
+                            <AnimalList />
+                        </Route>
                     </CustomerProvider>
                 </LocationProvider>
             </AnimalProvider>
 
-            <CustomerProvider>
-                <Route path="/customers">
-                    <CustomerList />
-                </Route>
-            </CustomerProvider>
-
-            <EmployeeProvider>
-                <Route path="/employees">
-                    <EmployeeList />
-                </Route>
-            </EmployeeProvider>
+            <AnimalProvider>
+                <LocationProvider>
+                    <CustomerProvider>
+                        <Route path="/customers">
+                            <CustomerList />
+                        </Route>
+                    </CustomerProvider>
+                </LocationProvider>
+            </AnimalProvider>
+            <LocationProvider>
+                <EmployeeProvider>
+                    <Route path="/employees">
+                        <EmployeeList />
+                    </Route>
+                </EmployeeProvider>
+            </LocationProvider>
         </>
     )
 }
