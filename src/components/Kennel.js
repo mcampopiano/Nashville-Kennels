@@ -1,22 +1,27 @@
 import React from "react"
-import { Animal } from "./animal/Animal"
-import { Customer } from "./customers/Customer"
-import { Employee } from "./employees/Employee"
-import "./Kennel.css"
-import { LocationProvider } from "./locations/LocationProvider"
-import { LocationList } from "./locations/LocationList"
-import { AnimalProvider } from "./animal/AnimalProvider"
-import { AnimalList } from "./animal/AnimalList"
-import { CustomerProvider } from "./customers/CustomerProvider"
-import { CustomerList } from "./customers/CustomerList"
-import { EmployeeProvider } from "./employees/EmployeeProvider"
-import { EmployeeList } from "./employees/EmployeeList"
-import { NavBar } from "./nav/NavBar"
+import { Route, Redirect } from "react-router-dom"
 import { ApplicationViews } from "./ApplicationViews"
+import { NavBar } from "./nav/NavBar"
+import { Login } from "./auth/Login"
+import { Register } from "./auth/Register"
+import "./Kennel.css"
 
 export const Kennel = () => (
     <>
-        <NavBar />
-        <ApplicationViews />
+        <Route render={() => {
+            if (localStorage.getItem("kennel_customer")) {
+                return (
+                    <>
+                        <Route render={props => <NavBar {...props} />} />
+                        <Route render={props => <ApplicationViews {...props} />} />
+                    </>
+                )
+            } else {
+                return <Redirect to="/login" />
+            }
+        }} />
+
+        <Route path="/login" render={props => <Login {...props} />} />
+        <Route path="/register" render={props => <Register {...props} />} />
     </>
 )
