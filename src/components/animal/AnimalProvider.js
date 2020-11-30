@@ -15,7 +15,7 @@ export const AnimalProvider = (props) => {
     }
 
     const addAnimal = animal => {
-        return fetch("http://locahost:8088/animals", {
+        return fetch("http://localhost:8088/animals", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
