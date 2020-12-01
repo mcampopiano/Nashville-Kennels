@@ -20,7 +20,7 @@ export const CustomerList = () => {
         <div className="customers">
             {
                 customers.map(customer => {
-                    const pet = animals.find(pet => pet.customerId === customer.id)
+                    const pet = animals.find(a => a.customerId === customer.id)
                     console.log("pet: ", pet, "animals: ", animals)
                     const location = locations.find(loc => loc.id === pet.locationId)
                    return <Customer key={customer.id} Customer={customer} Pet={pet} Location={location}/>
