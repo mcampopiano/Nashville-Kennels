@@ -23,9 +23,7 @@ export const AnimalList = (props) => {
             </button>
             {
                 animals.map(animal => {
-                    const owner = customers.find(c => c.id === animal.customerId)
-                    const location = locations.find(loc => loc.id === animal.locationId)
-                    return <Animal key={animal.id} Animal={animal} Owner={owner} Location={location}/>
+                    return <Animal key={animal.id} Animal={animal} />
                 }
                 )
             }
