@@ -7,6 +7,7 @@ export const AnimalContext = React.createContext()
 export const AnimalProvider = (props) => {
     // creates an array called animals, sets it as empty, and creates a function, called setAnimals, that will update animals when called
     const [animals, setAnimals] = useState([])
+    const [ searchTerms, setTerms ] = useState("")
 
     const getAnimals = () => {
         return fetch("http://localhost:8088/animals")
@@ -31,7 +32,7 @@ export const AnimalProvider = (props) => {
     }
 
     return (
-        <AnimalContext.Provider value={{animals, getAnimals, addAnimal, getAnimalById}}>
+        <AnimalContext.Provider value={{animals, getAnimals, addAnimal, getAnimalById, searchTerms, setTerms}}>
             {props.children}
         </AnimalContext.Provider>
     )
